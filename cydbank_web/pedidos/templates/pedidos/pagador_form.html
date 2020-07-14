@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang='es'>
+{% extends "pedidos/base_pedidos.html" %}
+{% load crispy_forms_tags %}	
+{% block javascript %}
+  <script>
+    $("#id_identificacion").change(function () {
+      var identificacion = $(this).val();
+
+      $.ajax({
+		url: "{% url 'pedidos:validar_tercero' %}",  
+        data: {
+          'identificacion': identificacion
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("El tercero ya fué creado.");
+          }
+        }
+      });
+
+    });
+
+  </script>
+{% endblock %}
+{% block content %}
+<head>
+	<meta charset='UTF-8'>
+	<h2>Información Pagador</h2>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        {{ form.identificacion|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        {{ form.tipoidentificacion|as_crispy_field }}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2 mb-0">
+        {{ form.nombre1|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-2 mb-0">
+        {{ form.nombre2|as_crispy_field }}
+      </div> 
+      <div class="form-group col-md-2 mb-0">
+        {{ form.apel1|as_crispy_field }}
+      </div> 
+      <div class="form-group col-md-2 mb-0">
+        {{ form.apel2|as_crispy_field }}
+      </div>   
+    </div>  
+    <div class="form-group col-md-6 mb-0">
+	    {{ form.razon_social|as_crispy_field }}
+    </div>  
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        {{ form.ciudad_direccion|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        {{ form.telefono|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        {{ form.email|as_crispy_field }}
+      </div>  
+    </div>	
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+{% extends 'index.html' %} {% load static %}
+
+
+{% block content %}
+    <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">{{ form_title }}</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'pedidos:homepage' %}">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ form_title }}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form method="post" class="form-horizontal"> {% csrf_token %}
+                                <div class="card-body">
+                                    <h4 class="card-title">Datos Paciente</h4>
+                                        <div class="form-group">
+                                        <label>Identificaciòn:</label>{{ form.identificacion }}<a type="button" class="btn btn-primary" href="{% url 'pedidos:crear_solicitante' %}">Crear</a>
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Tipo de Identificaciòn:</label>{{ form.tipoidentificacion }}<a type="button" class="btn btn-primary" href="{% url 'pedidos:crear_paciente' %}">Crear</a>
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Nombre:</label>{{ form.nombre }}
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Direcciòn:</label>{{ form.direccion }}
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Telèfono:</label>{{ form.telefono }}
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Paìs Nacimiento:</label>{{ form.pais }}
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Departamento Nacimiento:</label>{{ form.departamento }}
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Ciudad Nacimiento:</label>{{ form.ciudad }}
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Nacionalidad:</label>{{ form.nacionalidad }}
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Plan Salud:</label>{{ form.plan_salud }}<a type="button" class="btn btn-primary" href="{% url 'pedidos:crear_paciente' %}">Crear</a>
+                                        </div>
+                                        <div class="form-group">                        
+                                        <label>Eps:</label>{{ form.eps }}<a type="button" class="btn btn-primary" href="{% url 'pedidos:crear_paciente' %}">Crear</a>
+                                        </div>
+                                        <label>Fecha de Nacimiento:</label>
+                                        <input
+                                            name="fecha_nacimiento"
+                                            type="text"
+                                            class="form-control"
+                                            id="datepicker-autoclose"
+                                            {% if request.GET.fecha_nacimiento %}
+                                            value="{{ request.GET.fecha_nacimiento }}"
+                                            {% else %}
+                                            placeholder="dd/mm/yyyy"
+                                            {% endif %}
+                                        >
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- editor -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+<script>
+
+        $('.demo').each(function() {
+        $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function(value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        /*datwpicker*/
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+    </script>
+
+    <script>
+        $('.result_button').click(function (event) {
+            event.preventDefault();
+            const btn = $(this);
+            const href = btn.attr('data-href');
+            const params = window.location.search.substr(1);
+            const url = href + '?' + params;
+            $.ajax({
+                method: 'GET',
+                dataType: 'json',
+                url: url,
+
+                success: function (data) {
+                    $('#result_container').html(data.result)
+                }
+            })
+        })
+    </script>
+{% endblock %}

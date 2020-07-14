@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% comment %} {% load pages_extras %} {% endcomment %}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<title>CYDBANK &amp; Banco de Huesos y Tejidos</title>
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+	<script src="{% static 'js/modernizr.js' %}"></script>
+	<!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+	{% comment %} <title>Bootstrap Tutorial</title> {% endcomment %}
+    <!-- CSS -->
+    {% comment %} <link href="asset/css/bootstrap.min.css" rel="stylesheet"> {% endcomment %}
+    <!-- Add Custom CSS below -->
+    {% comment %} <link href="asset/css/theme.css" rel="stylesheet">  <!-- make space at the top for nav-bar --> {% endcomment %}
+</head>
+<style>
+html {
+    height: 100%;
+    width:100%;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: black;
+}
+.navbar{
+	background-color: #e6f9ff;
+}
+.navbar-nav{
+	{% comment %} color:black; {% endcomment %}
+}
+.container{
+	display: flex ;
+	flex-direction: row;
+	font-size: 20px;
+	background-color: #e6f9ff;
+	width: 75vw;
+	{% comment %} color:black; {% endcomment %}
+	{% comment %} color:black; {% endcomment %}
+
+}
+.dropdown-menu{
+	font-size: 20px;
+}
+.dropdown {
+	color: black;
+}
+.dropdown:hover {
+    background-color: black;
+    color white;
+}
+
+</style>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	{% comment %} <a href="{% url 'home' %}"><img style="padding-top: 0px;height:60px;width:220px;margin-right:10px" src="{% static 'img/logo_cyd.png' %}"  alt="" class="img-responsive logo"></a> {% endcomment %}
+      <div class="container">
+	    <div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+		  <div class="cyd">
+		  <a href="{% url 'home' %}"><img style="padding-top: 0px;height:60px;width:220px;margin-right:10px" src="{% static 'img/logo_cyd.png' %}"  alt="" class="img-responsive logo"></a>
+          </div>
+        </div>
+        <div class="row">
+          	<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a class="home"  href="{% url 'home' %}">Inicio</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">¿Quiénes somos?<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'pages:page' pk=1 %}">Fundación</a></li>
+							<li><a href="{% url 'pages:page' pk=13 %}">Impacto Social</a></li>
+							<li><a href="{% url 'pages:page' pk=12 %}">El Inicio</a></li>
+							<li><a href="{% url 'pages:page' pk=2 %}">Direccionamiento estratégico</a></li>
+							<li><a href="{% url 'pages:page' pk=4 %}">¿Por qué el nombre?</a></li>
+							<li><a href="{% url 'pages:page' pk=14 %}">Investigación</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Donación<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'pages:page' pk=20 %}">Introducción</a></li>
+							<li><a href="{% url 'pages:page' pk=21 %}">Información Importante</a></li>
+							<li><a href="{% url 'pages:page' pk=22 %}">Principios de la Fundación</a></li>
+							<li><a href="{% url 'pages:page' pk=23 %}">Cómo ser Donante</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Preguntas Injertos<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'pages:page' pk=15 %}">¿Quiénes se benefician?</a></li>
+							<li><a href="{% url 'pages:page' pk=6 %}">¿Cuantos tipos se procesan?</a></li>
+							<li><a href="{% url 'pages:faq_title' %}">FAQ</a></li>
+						</ul>
+					</li>
+
+					<li><a class="item" href="{% url 'pedidos:homepage' %}">Pedidos</a><li>
+					
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Legislación Y Calidad<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'pages:page' pk=17 %}">Legislación</a></li>
+							<li><a href="{% url 'pages:page' pk=7 %}">Calidad</a></li>
+							<li><a href="{% url 'pages:page' pk=8 %}">Tejido rescatado</a></li>
+							<li><a href="{% url 'pages:page' pk=9 %}">Procesamiento</a></li>
+							<li><a href="{% url 'pages:page' pk=10 %}">Otros controles</a></li>
+							<li><a href="{% url 'pages:page' pk=11 %}">Trazabilidad</a></li>
+						</ul>
+					</li>
+
+					<li><a href="https://www.zonapagos.com/t_fundcosmeydamian/pagos.asp">Pagos</a></li>
+					<li class="dropdown">
+						{% load pages_extras %}
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">ESAL Ley 1819 de 2016<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{% get_acta_junta_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+							
+							{% get_certificacion_estados_financieros_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+							
+							{% get_certificacion_cargos_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+							
+							{% get_certificacion_antecedentes_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+							
+							{% get_informe_revisor_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+							
+							{% get_estados_financieros_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+							
+							{% get_declaracion_renta_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+
+							{% get_informe_junta_list as documents %}
+							{% for document in documents %}
+									<a><li></i><a href="{{ document.pdf.url }}" >{{document.title}}</li></a>
+							{% endfor %}
+							
+							
+						</ul>
+						<li><a class="item" href="{% url 'contact:contact' %}">Contáctenos</a><li>
+				</ul>
+			</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- other codes here -->
+
+    <!-- Javascript -->
+    <!-- put jQuery.js before bootstrap.min.js; and then add custom jquery-->
+    {% comment %} <script src="asset/js/jquery-3.3.1.min.js"></script>
+    <script src="asset/js/bootstrap.min.js"></script> {% endcomment %}
+
+	{% block cuerpo %}{% endblock cuerpo %}
+
+
+
+	{% block footer%}{% endblock footer %}
+	<!-- script para el slide
+	============================================================= -->
+	<script src="{% static 'js/jquery-2.1.1.js' %}"></script>
+	<script src="{% static 'js/gmaps.js' %}"></script>
+	<script src="{% static 'js/smoothscroll.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

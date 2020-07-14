@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+ 
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Form Upload con Ajax</h1>
+            <hr>
+            <form action="/" method="post" enctype="multipart/form-data" id="uploadForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <input type="submit" id="upload" value="Enviar" class="btn btn-default">
+            </form>
+        </div>
+    </div>
+     
+     
+    <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+     
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+     
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+     
+    <script type='text/javascript'>
+        (function(){
+            $('#uploadForm').ajaxForm(function() { 
+                alert("El archivo se subió correctamente!"); 
+            }); 
+        })();
+    </script>
+     
+       
+</body>
+</html>

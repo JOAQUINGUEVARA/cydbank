@@ -1,0 +1,28 @@
+import reportlab
+from reportlab.graphics.widgets.grids import ShadedRect
+from reportlab.lib.colors import red, blue, white, darkblue, aquamarine, cadetblue, cyan, darkcyan, deepskyblue, mediumslateblue, midnightblue, navy, royalblue, fidlightblue, teal, grey, toColor, Color, gray
+from reportlab.graphics.charts.legends import Legend
+from reportlab.graphics.shapes import Drawing, _DrawingEditorMixin, Rect
+from reportlab.lib.formatters import DecimalFormatter
+from reportlab.graphics.charts.barcharts import HorizontalBarChart
+from reportlab.graphics.charts.textlabels import RedNegativeChanger
+{% block content %}
+<pageTemplate id="cover">  
+    <pageGraphics>  
+        <image file="img/logo_cyd.png" x="520" y="500" width="250" preserveAspectRatio="1"/>  
+  
+        <setFontSize size="24"/>  
+        <fill color="BLACK_TEXT"/>  
+        <drawString x="72" y="420">ReportLab Investment Management</drawString>             
+  
+        <setFontSize size="18"/>  
+        <fill color="GRAY_TEXT"/>  
+        <drawString x="72" y="395">Fund factsheet: {{fund.name}}</drawString>     
+  
+        <fill color="RL_BLUE"/>  
+        <rect x="0" y="385" height="3" width="842" stroke="0" fill="1"/>  
+  
+    </pageGraphics>  
+    <frame id="1" x1="72" y1="72" width="200" height="200"/>  
+</pageTemplate>
+{% endblock %}  

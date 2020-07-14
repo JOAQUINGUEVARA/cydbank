@@ -1,0 +1,68 @@
+{% extends "pedidos/base_pedidos.html" %}
+{% block content %}
+{% load humanize %}
+<h4>Listar Pedido</h4>
+{% comment %} {% for cabeza in cabeza %} {% endcomment %}
+        <div class="form-group">
+                <label>Fecha.</label>    {{ cabeza.created }}
+        </div>        
+        <div class="form-group">
+                <label>Solicitud No.</label>    {{ cabeza.id }}
+        </div>
+        <div class="form-group">
+                <label>Paciente</label>      {{ cabeza.paciente }}
+        </div>
+        <div class="form-group">                        
+                <label>Médico</label>    {{ cabeza.medico }}
+        </div>
+        <div class="form-group">                        
+                <label>Hospital</label>    {{ cabeza.hospital }}
+        </div>
+        <div class="form-group">                        
+                <label>Pagador</label>    {{ cabeza.pagador }}
+        </div>
+        <div class="form-group">
+                <label>Direccion De Envío</label>    {{ cabeza.direccion_envio }}
+                <label>Teléfono De Envío</label>    {{ cabeza.telefono_envio }}
+                <label>Ciudad De Envío</label>    {{ cabeza.direccion_envio }}
+                <label>Identificación Recibe</label>    {{ cabeza.id_recibe }}
+                <label>Ciudad De Envío</label>    {{ cabeza.direccion_envio }}
+                <label>Nombre Recibe</label>    {{ cabeza.nombre_recibe }}
+                <label>fecha Cirugía</label>    {{ cabeza.fecha_cirugia }}
+        </div>        
+        <div class="container"></div>
+        <table class="table">
+        <thead>
+                <tr>
+                        <th>Injerto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Valor Total</th>
+                </tr>
+        </thead>        
+        <tbody>
+                {% comment %} {% for solicitud in cuerpo %} {% endcomment %}
+                        {% comment %} {% if cabeza.numero   ==  solicitud.numero  %} {% endcomment %}
+                                <tr>       
+                                        <td>{{ cuerpo.tipoinjerto }}</td> 
+                                        <td>{{ cuerpo.cantidad }}</td>
+                                        <td>{{ cuerpo.valor|intcomma  }}</td>
+                                        <td>{{ cuerpo.valortotal|intcomma }}</td>
+                                </tr>
+                        {% comment %} {% endif %} {% endcomment %}
+                {% comment %} {% endfor %} {% endcomment %}
+                        
+        </tbody>
+        </table>
+{% comment %} {% endfor %}   {% endcomment %}      
+{% endblock %}
+<script>
+$(document).ready(function()
+{
+    var table = $('#tabla').dataTable( {
+        "language": {
+                url: "/static/localizacion/es_ES.json"
+        }
+    } );
+});
+</script>

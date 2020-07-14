@@ -1,0 +1,55 @@
+{% extends "pedidos/base_pedidos.html" %}
+{% comment %} {% load mathfilters %} {% endcomment %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% load render_table from django_tables2 %}
+{% block content %}
+<!doctype html>
+<style>
+.total{
+    display: flex;
+    padding-left: 280px;
+}
+.titulo-pedido{
+    display: flex;
+    align-content: center;
+    width: 100%;
+    color: white;
+    padding-left: 450px;
+    padding-top: 15px;
+    {% comment %} padding-rigth:50px"  {% endcomment %}
+    background-color:#08088A;
+}   
+</style>
+<html>
+    <head style=" height:100vh;width:100vw" >
+        <div class="titulo-pedido">
+            <h3>Mi Pedido</h3>
+        </div>
+        <div class="card" >
+            <div id='order_item_container' class="card-body">
+                {% render_table solicitud %}
+            </div>
+        </div>        
+    </head>
+    <body style=" height:100vh;width:100vw" >
+        <div class="titulo-pedido">
+        <h3>Detalle</h3>
+        </div>
+        <div class="card" >
+            <div id='order_item_container' class="card-body">
+                {% render_table table %}
+                {% comment %} {% include 'include/order_container.html' %} {% endcomment %}
+            </div>
+            <div class="total">
+                <h3><b>Total Pedido ==> $</b>{{ total|intcomma  }}</h3>
+            </div>
+        </div>
+    </body>
+    <a type="button" class="btn btn-primary" href="{% url "pedidos:mostrar_injertos_pedido" %}" value="salir" >Volver</a>
+    <a type="button" id='btn-identi' class="btn btn-primary" href="{% url 'upload:anexos_identificacion' %}">Anexar Identificación</a>
+    <a type="button" id='btn-formula' class="btn btn-primary" href="{% url 'upload:anexos_formula' %}">Anexar Fórmula</a>
+    <a type="button" class="btn btn-primary" href="{% url "pedidos:cierra_pedido" %}" value="salir" >Terminar Pedido</a>
+</html>
+
+{% endblock %}

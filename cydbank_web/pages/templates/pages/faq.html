@@ -1,0 +1,85 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block cuerpo %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css"
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html {
+    height: 100%;
+    width:100%;
+}
+.container-cyd{
+  display: flex ;
+	flex-direction: column;
+	font-size: 15px;
+	background-color: white;
+  width: 100%;
+  align-items: center;
+}
+.box-cyd{
+  display: flex ;
+  margin-top: 12vh;
+  align-content: center;
+  width: 100%;
+  align-items: center;
+}
+.accordion {
+  display: flex;
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 60%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 22px;
+  transition: 0.4s;
+}
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  font-size: 22px;
+  width: 60%;
+}
+</style>
+<div class="box-cyd">
+  <div class="container-cyd">
+    <h2>PREGUNTAS FRECUENTES</h2> 
+    {% for obj in faq%}
+    <button src="logg.png" class="accordion">{{ obj.title }}</button>
+    <div class="panel">
+      <p>{{ obj.content|safe}}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+{% endblock %}

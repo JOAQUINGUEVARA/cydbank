@@ -1,0 +1,160 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block cuerpo %}
+!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style>
+
+.grid-container-pages {
+   height: 100%;
+   width:100%;
+
+}
+.mainBlock {
+    display: flex;
+    align-items: center;
+    padding-left: 30%;
+    height: auto;
+    width: 100%;
+}
+.text-box{
+    margin-top:12%;
+    width: 80%;
+    height: auto;
+    text-align: justify;
+    font-size: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 40px;
+    justify-content: center;
+    background-color: #e6f2ff; /* For browsers that do not support gradients */
+    background-color: linear-gradient(#3399ff,#e6f2ff);
+    color: black;
+    font-family: sans-serif;
+    padding: 12px;
+}
+p{
+    font-size: 15px;
+    color: black;
+    padding: 3px;
+    margin-bottom: 3px; 
+}   
+.intro-button{
+    display: flex;
+    padding-left: 30%;
+}
+h1 {
+  text-align:center;
+  margin-bottom: 5%;
+  color: blue;
+  font-size: calc(1em + 2vw);
+  #font-size: 2vw;
+}
+.nombre {
+    text-align: center;
+    padding: 8px;
+    color: blue;
+    font-size: 25px;
+  }
+  .literal{
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #4040a1;
+      background-color: white;
+      padding-top: 1px;
+      padding-left: 4px;
+      padding-right: 4px;
+      padding-bottom: 1px;
+  }
+  .literal1{
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #4040a1;
+      background-color: white;
+      padding-top: 1px;
+      padding-left: 4px;
+      padding-right: 4px;
+      padding-bottom: 1px;
+  } 
+  .grupo{
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #4040a1;
+      background-color: white;
+      padding-top: 1px;
+      padding-left: 4px;
+      padding-right: 4px;
+      padding-bottom: 1px;
+  } 
+  .grupo-caracteristicas{
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #4040a1;
+      background-color: white;
+      padding-top: 1px;
+      padding-left: 3px;
+      padding-right: 3px;
+      padding-bottom: 1px;
+  }
+  h4{
+     margin: 7px 0 7px; 
+  }
+@media screen and (max-width: 800px) {
+  .text-box {
+    #font-size: 8px;
+    width: 100%;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 12%;
+  }
+  .nombre {
+    text-align: center;
+    margin-bottom: 5%;
+    color: blue;
+    font-size: calc(1em + 2vw);
+  }
+  .mainBlock{
+  padding-left: 2%;
+  }
+}
+</style>
+<{% comment %} link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css"
+<meta name="viewport" content="width=device-width, initial-scale=1"> {% endcomment %}
+
+<div class="grid-container-pages">
+    <div class="mainBlock">
+        <div class="text-box">
+            <div class ="nombre">{{ lista.descripcion }}</div>
+            <div class="grupo">
+            <h4>Grupo:</h4><p>{{ lista.grupo.descripcion|safe }}</p>
+            </div>
+            <br>
+            <div class="grupo-caracteristicas">
+            <h4>Características:</h4><p>{{ lista.grupo.caracteristicas|safe }}</p>
+            </div>
+            <br>
+            <div class="literal1">
+            <h4>Proceso:</h4><p>{{ lista.proceso|safe }}</p>
+            </div>
+            <br>
+            <div class="literal">
+            <h4>Cirugía:</h4><p><i>{{ lista.cirugia|safe }}</i></p>
+            </div>
+        </div>
+    </div>    
+
+    <div class="intro-button mx-auto">
+      {% comment %} <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="{% url 'pages:listar_vitrina' 1 %}">Regresar</button> {% endcomment %}
+      <a class="btn btn-primary btn-xl" href="{% url 'pages:listar_vitrina' lista.uso %}">Regresar</a>
+    </div>
+</div>    
+{% endblock %}
+                                      

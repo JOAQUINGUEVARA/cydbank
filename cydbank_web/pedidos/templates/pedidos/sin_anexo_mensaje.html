@@ -1,0 +1,29 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block cuerpo %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="about text-center" id="about">
+    <div class="container">
+        <div class="row">
+                <h1>¡ES REQUESITO PARA PRESENTAR LA SOLICITUD!</h1>
+                </br></br>
+                <h3>1 - Anexar la Identificación del Paciente</h3>
+                <h3>2 - Anexar la Fórmula Médica</h3>
+                </br></br>    
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="intro-button mx-auto">
+        <a class="btn btn-primary btn-xl" href="{% url 'pedidos:mostrar_injertos_pedido' %}">Aceptar</a>
+    </div>
+</section>
+{% endblock %}            

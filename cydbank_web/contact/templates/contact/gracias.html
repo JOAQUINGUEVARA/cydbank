@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block cuerpo %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="about text-center" id="about">
+    <div class="container">
+        <div class="row">
+                <h1>¡GRACIAS POR CONTACTARNOS!</h1>
+                </br></br>
+                <h3> Hemos recibido tus datos, el equipo de Atención al Paciente se comunicará contigo para darte la información que requieras y resolver todas las preguntas que tengas</h3>
+                </br></br>    
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="intro-button mx-auto">
+        <a class="btn btn-primary btn-xl" href="{% url 'home' %}">Regresar</a>
+    </div>
+</section>
+{% endblock %}            

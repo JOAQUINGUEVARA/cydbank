@@ -1,0 +1,101 @@
+{% extends "pedidos/base_pedidos.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+<style>
+    .container{
+        background-color: white;
+    }
+    .total{
+        display: flex;
+        flex-direction: row;
+        margin-left: 600px;
+    }
+    .btn{
+        margin-left: 50vw;
+    }
+    
+</style>
+
+<div class="container">
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Pedido Número :{{ cabeza.id }}</th>
+            <th>Fecha: {{ cabeza.fecha }}</th>
+        </tr>
+        <tr>
+            <th>Paciente:</th>
+            <th>{{ cabeza.paciente }}</th>
+            <th>Medico:</th>
+            <th>{{ cabeza.medico }}</th>
+        </tr>
+        <tr>
+            <th>Hospital:</th>
+            <th>{{ cabeza.hospital }}</th>
+            <th>Pagador:</th>
+            <th>{{ cabeza.pagador }}</th>
+        </tr>
+        <tr>
+            <th>Tipo Cirugìa:</th>
+            <th>{{ cabeza.tipo_cirugia }}</th>
+            <th>Fecha Cirugía:</th>
+            <th>{{ cabeza.fecha_cirugia }}</th>
+        </tr>
+        <tr>
+            <th>Id. Recibe:</th>
+            <th>{{ cabeza.id_recibe }}</th>
+            <th>Nombre Recibe:</th>
+            <th>{{ cabeza.nombre_recibe }}</th>
+        </tr>
+        <tr>    
+            <th>Dirección de Envío:</th>
+            <th>{{ cabeza.direccion_envio }}</th>
+            <th>Teléfono de Envío:</th>
+            <th>{{ cabeza.telefono_envio }}</th>
+        </tr>
+        <tr>
+            <th>Ciudad de Envío:</th>
+            <th>{{ cabeza.ciudad_envio }}</th>
+            <th></th>
+        </tr>
+    </thead>
+</div>
+
+<div class="container"></div>
+    <table class="table">
+        <thead>
+                <tr>
+                        <th>Tipoinjerto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Valor Total</th>
+                </tr>
+        </thead>        
+        {% for cuerpo in cuerpo %}
+        <tbody>
+            <tr>       
+                    <td>{{ cuerpo.tipoinjerto }}</td> 
+                    <td>{{ cuerpo.cantidad }}</td>
+                    <td>{{ cuerpo.valor|intcomma  }}</td>
+                    <td>{{ cuerpo.valortotal|intcomma }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+        <div class="total">
+            <div><h3>Total pedido===></h3></div><h3>{{total|intcomma}}</h3></div>
+        </div>
+        <a type="button" class="btn btn-primary" href="{% url "pedidos:imprimir_pedido_pdf" cabeza.id %}" value="salir" >Imprimir PDF</a>
+{% endblock %}
+<script>
+$(document).ready(function()
+{
+    var table = $('#tabla').dataTable( {
+        "language": {
+                url: "/static/localizacion/es_ES.json"
+        }
+    } );
+});
+</script>

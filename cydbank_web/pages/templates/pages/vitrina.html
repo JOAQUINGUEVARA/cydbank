@@ -1,0 +1,76 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block cuerpo %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js" 
+
+integrity="sha256-SNDsmWBFQwJAjxLymQu5Fqh6rW4RKLJXUQboy3O0BUA=" crossorigin="anonymous">
+</script>
+
+<style>
+    .album{
+        margin-top: 10%;
+    }
+    .photo-border{
+        #border: 1px solid #53cde5;
+        background-color:#deeaee;
+    }
+    .text-border{
+        border: 1px solid #4040a1;
+        background-color: white;
+        justify-content: space-around;
+        text­align: justify;
+        font-weight: bold;
+        font-size: 18px;
+        color:black;
+    }
+    .descripcion{
+        text-align:center;
+        margin-top: 1px;
+        margin-bottom: 2px;
+        padding: 5px;
+    }
+    .card-body{
+        text-align: justify;
+        font-size: 15px;
+        justify-content: center;
+        
+    }
+    .col-md-4{
+        margin-top: 25px;
+    }
+    .row{
+       background-color: white; 
+    }
+</style>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            {% for obj in injertos %}
+            {% if obj.get_image %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="photo-border">
+                    <a href="{% url 'pages:detalle_injerto' obj.id %}">
+                        {% comment %} <img class="card-img-top" src="{{ job.image.url }}" /> {% endcomment %}
+                        <img class="card-img-top" style="height:180px;width:190;object-fit:cover"  src="{{ obj.get_image }}">
+                    </a>
+                    </div>
+                    <div class="mask cursor-zoom-in p-3 d-flex align-items-end rgba-black-light text-white">
+                        <div class="text-border">
+                            <div class="card-body">
+                                <div class="descripcion"> 
+                                {{ obj.descripcion }}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </br>
+                </div>    
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

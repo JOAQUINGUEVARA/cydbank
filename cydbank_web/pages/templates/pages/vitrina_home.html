@@ -1,0 +1,100 @@
+{% comment %} {% extends "home/base.html" %} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+{% load humanize %}
+{% block cuerpo %}
+<style>
+.product-grid{
+  width: 100%;
+  height: 100%;
+}
+.product-inj{
+  display: flex;
+  {% comment %} border: 1px solid; {% endcomment %}
+  {% comment %} padding: 1px; {% endcomment %}
+  {% comment %} box-shadow: 5px 10px #888888; {% endcomment %}
+  {% comment %} box-shadow: 5px 10px #888888 {% endcomment %}
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 10px 0 rgba(0,0,0,0.19);
+  flex-direction: column;
+  {% comment %} border-style: groove; {% endcomment %}
+  {% comment %} background-color:#E6EE9C; {% endcomment %}
+  background-color:#BDBDBD;
+  {% comment %} padding-top: 60px; {% endcomment %}
+  
+  border-radius: 10px 10px;
+  align-content:center;
+  {% comment %} padding-top: 600px; {% endcomment %}
+  margin-top: 30px;
+  margin-left: 30%;
+  width: 30%;
+  height: 30%;
+  {% comment %} margin-top: 10%; {% endcomment %}
+} 
+.text{
+    display: flex;
+    border-top: 2px solid #53cde5;
+    padding-top: 5px;
+    font-size: 5x;
+    font-weight: bold;
+}
+.detalle-box{
+    display: flex;
+    padding-top: 1px;
+    font-weight: bold;
+    flex-direction: row;
+    width: 30%;
+    height: 30%;
+    {% comment %} justify-content: column; {% endcomment %}
+    {% comment %} flex-direction: column; {% endcomment %}
+}
+.precio{
+    display: flex;
+    justify-content: space-between;
+}
+{% comment %} .product-image{
+    display: flex;
+    flex-direction: column;
+    height:10%;
+
+} {% endcomment %}
+.img-fluid{
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 0px;  
+    width: 90%;
+    height: 90%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.product-grid{
+    {% comment %} display: grid;   {% endcomment %}  
+    {% comment %} grid-template-columns: 1500px 1500px 1500px;
+    grid-template-rows: 1500px;  {% endcomment %}
+    {% comment %} column-gap: 10px;
+    row-gap: 15px; {% endcomment %}
+   {% comment %}  heigth: 100%: {% endcomment %}
+}
+</style>
+
+{% for obj in injertos %}
+<div class="product-grid">
+    <div class="product-inj">
+        <div>
+            {% comment %} <img src="{{obj.get_image}}" class="avatar"> {% endcomment %}
+            <img src="{{obj.foto.url}}" class="img-fluid">
+        </div>
+        <div class="text" >  
+            <p>{{ obj.descripcion }}</p>
+        </div>
+        <div class="detalle-box" >  
+            <div class="detalle" >
+                {{ obj.detalle }}
+            </div>
+        </div>
+    </div>
+    </br>
+</div>    
+{% comment %} </div> {% endcomment %}
+{% endfor %}
+{% endblock %}
+</html>

@@ -1,0 +1,17 @@
+{% extends 'upload/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <body>
+        <iframe src="url(r'^archivo', DescargarArchivoView.as_view(), name='archivo_post')", frameborder="0"></iframe>
+  </body>
+
+  <form method="post" action="{% url 'post:archivo_post' %}">
+      {% csrf_token %}
+
+      <input type="hidden" name="id_post" value="{{post.pk}}"/>
+      <input type="submit" class="btn btn-primary" type="button" value="Descargar Archivo Adjunto">
+  </form>
+
+{% endblock %}

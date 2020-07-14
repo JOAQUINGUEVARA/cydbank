@@ -1,0 +1,101 @@
+{% extends 'pedidos/base_pedidos.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% load django_tables2 %}
+{% load humanize %}
+{% comment %} {% load render_table from django_tables2 %} {% endcomment %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% load static %}
+{% block content %}
+{% load render_table from django_tables2 %}
+<!doctype html>
+<script>
+.total{
+    display: flex;
+    padding-left: 330px;
+}
+.filtro{
+    background-color:#08088A;
+    color: white;
+
+}
+div.card{
+    display: flex;
+    width: 80%;
+}
+.header-titulo{
+    display: flex;
+    align-content: center;
+    width: 100%;
+    color: white;
+    padding-top: 2px
+    padding-top: 15px;
+    background-color:#08088A;
+}
+</script>
+{% if filter %}
+<div class ="filtro" style="background-color:#08088A;color: white;width: 500px;padding-top: 1px;padding-bottom: 5px;padding-left: 20px">
+    <center><h3 style= "color: white;align-text: center;">SOLICITUD No. {{ solicitud_no }}</h3></center>
+    <div class="buttons-box">     
+        <h5> FILTROS </h5>
+        <form action="" method="get" class="form form-inline">
+            Especialidad/Nombre :{% bootstrap_form filter.form layout='inline' %}
+            <input type="submit" />
+            {% comment %} {% bootstrap_button 'filtrar' %} {% endcomment %}
+            {% comment %}  <input class="btn btn-primary btn-sm mt-1 mb-1" type="submit" href="{% url "pedidos:crea_detalle_pedido" 0 %}" /> {% endcomment %}
+            {% comment %} <input class="btn btn-primary btn-sm mt-1 mb-1" type="submit"  /> {% endcomment %}
+        </form>
+    </div>
+</div>    
+{% endif %}
+
+<div class="container-fluid" style="width: 120%; padding-left: 1px;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="header-titulo">
+                    <div class="titulo-injerto">
+                        <center><h3 style= "color: blue;align-text: center;">INJERTOS</h3></center>
+                    </div>
+                </div>
+                <div class="card-body" id="product_container">
+                    {% render_table table %}
+                    {% for table in tables %}
+                    {% comment %} <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-bordered table-striped mb-0"> {% endcomment %}
+                        {{ table.descripcion}}
+                        {{ table.precio}}
+                    {% comment %} </table>
+                    </div>    {% endcomment %} 
+                    {% endfor %}   
+                    {% comment %} {% include 'include/product_container.html' %} {% endcomment %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <center><h3 style= "color: blue;align-text: center;">DETALLE PEDIDO</h3></center>
+                <div id='order_item_container' class="card-body">
+                    {% render_table detalle %}
+                    {% comment %} {% include 'include/order_container.html' %} {% endcomment %}
+                </div>
+                <div class="total">
+                    <center><h3><b>Total Pedido ====> $</b>{{ total|intcomma  }}</h3></center>
+                </div>
+            </div >
+            <div class="bot-box" style="display: flex;flex-direction: row;justify-content: space-evenly;"> 
+                <div class="bot-pedido">
+                    <a type="button" id='btn-cerrar' class="btn btn-primary" href="{% url "pedidos:finalizar_pedido" %}" value="salir" >Cerrar Pedido</a>
+                </div>
+                {% comment %} <div class="bot-otro">
+                    <a type="button" id='btn-Otro' class="btn btn-primary" href="{% url "pedidos:crea_pedido_igual" %}" value="submit" > + Otro Injerto Igual</a>
+                </div> {% endcomment %}
+            <div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pagination %}{% endblock %}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{% extends 'pages:base_pages.html' %}
+
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+{% csrf_token %}
+
+{% endblock %}

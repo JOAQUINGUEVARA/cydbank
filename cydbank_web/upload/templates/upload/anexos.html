@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Make Profile</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <center>
+            <div class="jumbotron">
+                <h1 class="display-4">DataFlair Django File Uploading</h1>
+                        {% block replace %}
+                <p class="lead">To make a user profile and upload the files fill this form</p>
+                <hr class="my-4">
+
+                <form action = "" method = "get"> 
+                    <label for="your_name">Tipo Anexo: </label> {{ form.idanexo}}
+                    <input id="your_name" type="text" name="your_name"> 
+                    <input type="submit" value="OK"> 
+                </form>
+                    <form action="/" method="post" enctype="multipart/form-data" id="uploadForm">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br>
+                    <input type="submit" id="upload" value="Enviar" class="btn btn-default">
+                </form>
+            </div>
+        </center>
+        {% endblock %}
+    </body>
+</html>

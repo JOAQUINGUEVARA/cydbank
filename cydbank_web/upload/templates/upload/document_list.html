@@ -1,0 +1,49 @@
+{% extends 'upload/base.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Documentos</h2>
+    <p>
+      <a href="{% url 'upload:upload_document' %}" class="btn btn-primary">Subir Documento</a>
+    </p>
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Cubierta</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Subir</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for document in documents %}
+        <tr>
+          <td>
+            {% if document.cover %}
+              <img src="{{ document.cover.url }}" alt="{{ document.title }}" style="width:100px;">
+            {% else %}
+              <span class="text-muted">No cubierta</span>
+            {% endif %}
+          </td>
+          <td>{{ document.title }}</td>
+          <td>{{ document.author }}</td>
+          <td>
+            <a href="{{ document.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Subir PDF
+            </a>
+          </td>
+          <td>
+            <form method="post" action="{% url 'upload:delete_document' document.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

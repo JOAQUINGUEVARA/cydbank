@@ -1,0 +1,384 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block cuerpo %}
+<style>
+.slider{
+	width:100%;
+	height:90%;
+}
+
+.container-fluid{
+	width: 100%;
+	height: 50%;
+}
+.productos{
+	display: flex ;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	background-color: white;
+	height: auto;
+}
+.product1{
+	display: flex ;
+	background-color: #07ADC4;
+	padding-right: 0px;
+    padding-left: 0px;
+	color: white;
+	font-size: 20px;
+	width: 20%;
+	font-family: 'BenchNine', sans-serif;
+	height: auto;
+	flex-direction: column;
+	border-width: thin;
+	text-align: center;
+	border-style: solid;
+}
+.product2{
+	display: flex ;
+	background-color: #07ADC4;
+	padding-right: 0px;
+    padding-left: 0px;
+	color: white;
+	font-size: 20px;
+	width: 20%;
+	font-family: 'BenchNine', sans-serif;
+	height: auto;
+	flex-direction: column;
+	border-width: thin;
+	text-align: center;
+	border-style: solid;
+}
+.img-product{
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+	margin-top: 30px;
+
+}
+.img-box-product1{
+	border-style: solid;
+}
+.product-text{
+	font-family: 'BenchNine', sans-serif;
+	margin: 35px
+	font-size: 1vw;
+
+
+}
+.product1:hover{
+  background-color: #2a2a2a;
+}
+.product2:hover{
+  background-color: #2a2a2a;
+}
+.about-details{
+	height: 300px;
+}
+.contacto{
+	display: flex ;
+	flex-direction: column;
+	margin-left: 40px;
+	color: white;
+}
+.data-info{
+	display: flex ;
+	flex-direction: row;
+}
+.carousel-inner{
+	margin-top:1%;
+}
+.header-backup{
+	height: 1px;
+}
+.carousel-caption{
+	width:80%;
+	font-size: 30px;
+}
+.slider{
+	height:auto;
+	margin-top: 4vh;
+}
+.contact-info{
+	margin-top: 2%;
+	height: auto;
+}
+.contact-caption{
+    margin-top: 1%;
+}
+.line div {
+  display: flex ;
+  border-bottom: 1px solid white;
+  height: 2px;
+  width:30%;
+  #max-width: 200px;
+  #padding: 0;
+  #margin: 2px auto 0 auto;
+}
+.line1 div {
+  display: flex ;
+  border-bottom: 1px solid white;
+  height: 2px;
+  width:30%;
+  margin-top : 15px;
+  margin-bottom : 15px;
+}
+.abeas{
+	display: flex ;
+	flex-direction: column;
+	margin-left: 25px;
+}
+.abeas-data{
+	display: flex ;
+	margin-bottom: 20px;
+}
+.privacidad{
+	display: flex;
+	margin-top: 20px;
+}
+.social{
+	margin-left:35px;
+}
+.vl {
+  border-left: 1px solid white;
+  height: 180px;
+  margin-left: 25px;
+}
+@media screen and (max-width: 800px) {
+  .productos {
+    flex-direction: column;
+  }
+  .productos>* {
+    width: 100%;
+  }
+  .line div {
+  border-bottom:solid 1px white;
+  width:50%;
+  height:50px;
+}
+.data-info{
+	display: flex ;
+	flex-direction: column;
+}
+.vl {
+  border-left: 1px solid white;
+  height: .1px;
+  margin-left: 0px;
+}
+.slider{
+	height:auto;
+	margin-top: 10vh;
+}  
+</style>
+<section class="slider" id="home">
+		<div class="container-fluid">
+			<div class="row">
+			    <div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
+					<div class="header-backup"></div>
+			        <!-- Wrapper for slides -->
+			        <div class="carousel-inner" role="listbox">
+			            <div class="item active">
+			            	<img src="{% static 'img/Cirugia.jpg' %}" alt=""  width="1800" height="1200">
+			                <div class="carousel-caption">
+		               			<h1>somos</h1>
+		               			<p>Desde 1988 uno de los primeros bancos de tejidos y huesos en Latinoamérica y Colombia, contamos con una trayectoria y experiencia de más de 30 años en el rescate, procesamiento y distribución de tejidos e injertos</p>
+		               			{% comment %} <button>learn more</button> {% endcomment %}
+			                </div>
+			            </div>
+			            <div class="item">
+			            	<img src="{% static 'img/Contamos.jpg' %}" alt="" width="1800" height="1200">
+			                <div class="carousel-caption">
+		               			<h1>mas de</h1>
+		               			<p>3600 personas generosamente donaron sus tejidos, alrededor de 159.000 pacientes se han beneficiado. Se han evitado aproximadamente 1.700 amputaciones y más de 7.700 pacientes tendrían discapacidad si no se les hubiera suministrado los injertos procesados por el banco</p>
+		               			{% comment %} <button>learn more</button> {% endcomment %}
+			                </div>
+			            </div>
+			            <div class="item">
+			            	<img src="{% static 'img/mas-de.jpg' %}" alt=""  width="1800" height="1200">
+			                <div class="carousel-caption">
+		               			<h1>contamos</h1>
+		               			<p>Con los más altos estándares de calidad y bioseguridad lo que garantiza el 100% de trazabilidad del injerto y que a la fecha no se haya presentado un evento adverso</p>
+		               			{% comment %} <button>learn more</button> {% endcomment %}
+			                </div>
+			            </div>
+						<div class="item">
+						 <div class="embed-responsive embed-responsive-16by9">
+							<iframe  width="1600" height="1200" src="https://www.youtube.com/embed/CNIPb6IYAEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+						</div>
+			        </div>
+			        <!-- Controls -->
+			        <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
+			            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			            <span class="sr-only">Previous</span>
+			        </a>
+			        <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
+			            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			            <span class="sr-only">Next</span>
+			        </a>
+			    </div>
+			</div>
+		</div>
+	</section><!-- end of slider section -->
+	<!-- about section -->
+	<section class="about text-center" id="about">
+		<div class="container">
+			<div class="row">
+				{% comment %} <h2>Quiénes Somos</h2>
+				<h4>Institución privada sin animo de lucro. Obtenemos, procesamos, almacenamos y distruibuimos tejido óseo humano y otros tejidos, para aplicaciones médicas y odontológicas.</h4> {% endcomment %}
+				</br></br>
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail clearfix">
+						<div class="about-img">
+							<img class="img-responsive" style="height:250px;object-fit:cover" src="{% static 'img/Paciente.png' %}" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<h1>C</h1>
+							</div>
+							<h3>Paciente</h3>
+							<p>Brindamos atención al 100% de los pacientes, hacemos todo lo posible por proporcionarle a usted o a su familiar el tejido que requiere para su tratamiento. La función del Banco es precisamente satisfacer la demanda de injertos en nuestro país.</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail">
+						<div class="about-img">
+							<img class="img-responsive" style="height:250px;object-fit:cover" src="{% static 'img/Recurso humano.png' %}" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<h1>Y</h1>
+							</div>
+							<h3>Recurso Humano</h3>
+							<p>Contamos con el soporte científico de médicos sub especializados de prestigioso reconocimiento nacional e internacional ante cualquier tipo de urgencia o inquietud de los médicos tratantes.
+							{% comment %}  Adicionalmente, nuestro equipo de trabajo es altamente comprometido y eficiente para apoyar y responder de una forma oportuna las diferentes necesidades en clínicas y hospitales.</p> {% endcomment %}
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="single-about-detail">
+						<div class="about-img">
+							<img class="img-responsive" style="height:250px;object-fit:cover" src="{% static 'img/normatividad2.jpg' %}" alt="">
+						</div>
+						<div class="about-details">
+							<div class="pentagon-text">
+								<h1>D</h1>
+							</div>
+							<h3>Normatividad</h3>
+							<p>Cumplimos estrictamente con los requerimientos legales explícitos en el decreto 2493 del 2004 que regula la actividad de los bancos de tejidos y la resolución 5108 de 2005 que garantiza la certificación por parte del Invima en buenas prácticas.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of about section -->
+	<!-- service section starts here -->
+	<section class="">
+		<div class="productos">
+			{% comment %} <div class="row"> {% endcomment %}
+				<div class="product1">
+					<div class="pr">
+						<div class="img-box-product">
+						<a class="img-product" style="height:100px;object-fit:cover;" href="{% url 'pages:listar_vitrina' 2 %}"><img src="{% static 'img/Odontologia.png' %}" alt="" ></a>
+						</div>
+					</div>
+					<div class="product-text">
+						<h3>Línea Odontológica</h3>
+					</div>
+				</div>
+				<div class="product2">
+					<div class="pr">
+						<div class="img-box-product">
+                        <a class="img-product" style="height:100px;object-fit:cover;" href="{% url 'pages:listar_vitrina' 1 %}"><img src="{% static 'img/Ortopedia.png' %}"  alt="" ></a>
+					</div>
+					</div>
+					<div class="product-text">
+						<h3>Línea Quirúrgica</h3>
+						{% comment %} <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p> {% endcomment %}
+					</div>
+				</div>
+			{% comment %} </div> {% endcomment %}
+		</div>
+	</section>
+	
+{% endblock %}
+
+{% block footer %}
+<div class="informacion">
+	<div class="contact-caption clearfix">
+		<div class="contact-info">
+			<div class="tit-contact">
+				<div class="contacto">
+					<div>
+						<h2>Información de contacto</h2>
+					</div>
+					<div class="data-info" >
+						<div class="line">
+							<div>
+							</div>
+						</div>
+						<div>
+							<ul><li><i class="fa fa-map-marker"></i><span>Bogotá - Colombia: </span>Calle 119 No. 7-14 piso 2. Edificio Santa Ana Medical Center</li></ul>
+							<ul><li><i class="fa fa-phone"></i><span>Teléfono:</span> PBX (571)6583200 Cel.: 321 467 9408 - 3138525209</li></ul>
+							<ul><li><i class="fa fa-map-marker"></i><span>Cali – Colombia: </span>Cl. 18 # 122 – 135 Torre L 4to piso. Universidad ICESI</li></ul>
+							<ul><li><i class="fa fa-phone"></i><span>Teléfono:</span> (572)5552334 Ext 4198 Cel. 312-4166804</li></ul>
+						</div>
+						<div class="line1">
+							<div>
+							</div>
+						</div>
+						<div class="vl"></div>
+						<div class="abeas">
+							{% comment %} <ul><li><a style="color:white" href="{% url 'upload:upload_one_document' pk=1 %}" class="link"><span>Política de Tratamiento de Datos</span></a></li></ul> {% endcomment %}
+							{% load pages_extras %}
+							<div class="abeas_data">
+								{% get_abeas_list as documents %}
+								{% for document in documents %}
+									<ul><li><i class="fa fa-shield"></i><a href="{{ document.pdf.url }}" class="link"><span style="color:white" >{{document.title}}<span></a> {% if not forloop.last %}{% endif %}</li></ul>
+								{% endfor %}
+							</div>
+
+							<div class="privacidad">
+								{% get_privacidad_list as documents %}
+								{% for document in documents %}
+									<ul><li><i class="fa fa-camera-retro"></i><a href="{{ document.pdf.url }}" class="link"><span style="color:white" >{{document.title}}<span></a> {% if not forloop.last %}{% endif %}</li></ul>
+								{% endfor %}
+							</div>
+						</div>
+						
+						<div class="line1">
+							<div>
+							</div>
+						</div>
+						</br>
+					</div>
+				</div>
+				<div class="social">
+					<p class="m-0">
+						<a href="{{LINK_TWITTER}}" class="link">
+						<span class="fa-stack fa-2x">
+							<i class="fa fa-circle fa-stack-5x"></i>
+							<i class="fa fa-twitter fa-stack-2x fa-inverse"></i>
+						</span>
+						</a>
+						<a href="{{LINK_FACEBOOK}}" class="link">
+						<span class="fa-stack fa-2x">
+							<i class="fa fa-circle fa-stack-5x"></i>
+							<i class="fa fa-facebook fa-stack-2x fa-inverse"></i>
+						</span>
+						</a>
+						<a href="{{LINK_INSTAGRAM}}" class="link">
+						<span class="fa-stack fa-2x">
+							<i class="fa fa-circle fa-stack-5x"></i>
+							<i class="fa fa-instagram fa-stack-2x fa-inverse"></i>
+						</span>
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock footer %}
