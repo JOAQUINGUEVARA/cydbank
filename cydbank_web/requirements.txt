@@ -58,7 +58,7 @@ PySocks==1.7.1
 python-dotenv==0.13.0
 pytz==2019.3
 pywin32==227
-PyYAML==5.3.1
+PyYAML==5.4
 redis==2.10.6
 requests==2.23.0
 service-identity==18.1.0
